@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTT.WebUI", "PTT.WebUI\PTT.WebUI.csproj", "{E1CBB111-FAC7-45CA-8505-A3C4575DA199}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTT.Entities", "PTT.Entities\PTT.Entities.csproj", "{C3AD8A56-08B0-417D-8163-F0A0BB20AA40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTT.Repositories", "PTT.Repositories\PTT.Repositories.csproj", "{2905461F-AB33-4359-9301-6066EC3E68D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1CBB111-FAC7-45CA-8505-A3C4575DA199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CBB111-FAC7-45CA-8505-A3C4575DA199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1CBB111-FAC7-45CA-8505-A3C4575DA199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1CBB111-FAC7-45CA-8505-A3C4575DA199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3AD8A56-08B0-417D-8163-F0A0BB20AA40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3AD8A56-08B0-417D-8163-F0A0BB20AA40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3AD8A56-08B0-417D-8163-F0A0BB20AA40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3AD8A56-08B0-417D-8163-F0A0BB20AA40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2905461F-AB33-4359-9301-6066EC3E68D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2905461F-AB33-4359-9301-6066EC3E68D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2905461F-AB33-4359-9301-6066EC3E68D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2905461F-AB33-4359-9301-6066EC3E68D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
