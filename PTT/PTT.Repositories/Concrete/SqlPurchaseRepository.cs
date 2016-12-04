@@ -28,7 +28,7 @@ namespace PTT.Repositories.Concrete
         {
             IQueryable<Purchase> query = context.Set<Purchase>();
             query = IncludePaths(paths, query);
-            if (query != null)
+            if (criteria != null)
             {
                 query = query.Where(criteria).AsQueryable();
             }
