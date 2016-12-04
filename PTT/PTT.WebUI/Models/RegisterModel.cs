@@ -20,6 +20,7 @@ namespace PTT.WebUI.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Confirm your password")]
+        [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords does not match")]
         public string ConfirmPassword { get; set; }
     }

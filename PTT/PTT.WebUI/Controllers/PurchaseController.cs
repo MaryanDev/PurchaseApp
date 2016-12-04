@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace PTT.WebUI.Controllers
 {
+    [Authorize]
     public class PurchaseController : Controller
     {
         // GET: Purchase

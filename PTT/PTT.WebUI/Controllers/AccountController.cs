@@ -15,31 +15,56 @@ namespace PTT.WebUI.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Login(string s)
-        //{
-            
-        //}
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Login(LoginModel loginModel)
+        {
+            return View(loginModel);
+        }
 
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(RegisterModel regModel)
         {
+            if (ModelState.IsValid)
+            {
+                PttUser userToRegister = new PttUser { UserName = regModel.UserName, Email = regModel.Email };
+                IdentityResult resultOfRegisteing = UserManager.Create(userToRegister, regModel.Password);
+
+                if (resultOfRegisteing.Succeeded)
+                {
+                    RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    AddErrorsFromResult(resultOfRegisteing);
+                }
+            }
             return View(regModel);
         }
 
         private IAuthenticationManager AuthManager => HttpContext.GetOwinContext().Authentication;
 
         private PttUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<PttUserManager>();
+
+        private void AddErrorsFromResult(IdentityResult result)
+        {
+            foreach (string error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
     }
 }

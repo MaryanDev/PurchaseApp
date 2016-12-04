@@ -7,6 +7,7 @@ using PTT.WebUI.Infrastructure.Autentification;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace PTT.WebUI.App_Start
 {
@@ -21,6 +22,15 @@ namespace PTT.WebUI.App_Start
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
+                Provider = new CookieAuthenticationProvider
+                {
+                    OnValidateIdentity = SecurityStampValidator
+                .OnValidateIdentity<PttUserManager, PttUser, int>(
+                    validateInterval: TimeSpan.FromMinutes(30),
+                    regenerateIdentityCallback: (manager, user) =>
+                        user.GenerateUserIdentityAsync(manager),
+                    getUserIdCallback: (id) => (id.GetUserId<int>()))
+                }
             });
         }
     }
