@@ -13,6 +13,7 @@ using PTT.WebUI.Models;
 
 namespace PTT.WebUI.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         [AllowAnonymous]
@@ -48,7 +49,7 @@ namespace PTT.WebUI.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Index", "Home");
                 }
             }
 
@@ -72,7 +73,7 @@ namespace PTT.WebUI.Controllers
 
                 if (resultOfRegisteing.Succeeded)
                 {
-                    RedirectToAction("Index", "Dashboard");
+                    RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -80,6 +81,12 @@ namespace PTT.WebUI.Controllers
                 }
             }
             return View(regModel);
+        }
+
+        public ActionResult Logout()
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Login");
         }
 
         private IAuthenticationManager AuthManager => HttpContext.GetOwinContext().Authentication;

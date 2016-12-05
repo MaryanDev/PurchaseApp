@@ -7,17 +7,17 @@ using PTT.Repositories.Abstract.Interfaces;
 
 namespace PTT.WebUI.Controllers
 {
-    public class DashboardController : Controller
+    public class HomeController : Controller
     {
         private IPurchaseRepository _purchaseRepo;
-        public DashboardController(IPurchaseRepository purchaseRepo)
+        public HomeController(IPurchaseRepository purchaseRepo)
         {
             this._purchaseRepo = purchaseRepo;
         }
         // GET: Dashboard
         public ActionResult Index()
         {
-            return View(_purchaseRepo.Get());
+            return View();
         }
     }
 }
