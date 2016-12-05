@@ -23,8 +23,35 @@ namespace PTT.WebUI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(LoginModel loginModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel loginModel, string returnUrl)
         {
+            PttUser user = UserManager.Find(loginModel.Login, loginModel.Password);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid user name or password.");
+            }
+            else
+            {
+                ClaimsIdentity ident = UserManager.CreateIdentity(user,
+                    DefaultAuthenticationTypes.ApplicationCookie);
+
+                AuthManager.SignOut();
+                AuthManager.SignIn(new AuthenticationProperties
+                {
+                    IsPersistent = false
+                }, ident);
+                if(returnUrl != null)
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
+            }
+
             return View(loginModel);
         }
 

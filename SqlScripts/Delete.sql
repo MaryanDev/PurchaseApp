@@ -22,3 +22,7 @@ drop table Budgets;
 drop table Categories;
 drop table Places;
 drop table Importances;
+drop table [AspNetUserClaims];
+drop table AspNetUserRoles
+drop table [AspNetUserLogins];
+drop table [AspNetRoles]

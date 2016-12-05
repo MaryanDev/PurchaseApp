@@ -30,8 +30,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="From" Type="date" Nullable="false" />
-          <Property Name="To" Type="date" Nullable="false" />
+          <Property Name="From" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="To" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -67,7 +67,7 @@
           <Property Name="Price" Type="numeric" Precision="18" Scale="4" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="PlaceId" Type="int" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="ImportanceId" Type="int" />
           <Property Name="IsPlanned" Type="bit" Nullable="false" />
@@ -192,8 +192,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="From" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="To" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.fk_budget_to_user" FromRole="Budgets" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="Category">
@@ -233,7 +233,7 @@
           <Property Name="Price" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="PlaceId" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="ImportanceId" Type="Int32" />
           <Property Name="IsPlanned" Type="Boolean" Nullable="false" />
@@ -302,7 +302,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PurchaseAppDbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="Budgets" EntityType="Self.Budget" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
@@ -335,7 +335,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PurchaseAppDbModelStoreContainer" CdmEntityContainer="PurchaseAppDbEntities">
+        <EntityContainerMapping StorageEntityContainer="PurchaseAppDbModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="PurchaseAppDbModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">

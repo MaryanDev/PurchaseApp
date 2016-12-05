@@ -12,7 +12,7 @@ create table Purchases
 	Price numeric(18, 4) not null,
 	UserId int not null,
 	PlaceId int,
-	[Date] date not null,
+	[Date] nvarchar(50) not null,
 	CategoryId int not null,
 	ImportanceId int null,
 	IsPlanned bit not null
@@ -54,14 +54,103 @@ CREATE TABLE [dbo].[AspNetUsers](
 	[AccessFailedCount] [int] NOT NULL,
 	[UserName] [nvarchar](256) NOT NULL,
 );
+SET ANSI_NULLS ON
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](128) NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+ 
+GO
 
+SET ANSI_NULLS ON
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+CREATE TABLE [dbo].[AspNetUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](128) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+ 
+GO
+ 
+--ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+--REFERENCES [dbo].[AspNetUsers] ([Id])
+--ON DELETE CASCADE
+--GO
+ 
+--ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId]
+--GO
+
+SET ANSI_NULLS ON
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+CREATE TABLE [dbo].[AspNetUserLogins](
+	[LoginProvider] [nvarchar](128) NOT NULL,
+	[ProviderKey] [nvarchar](128) NOT NULL,
+	[UserId] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC,
+	[ProviderKey] ASC,
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+ 
+GO
+ 
+--ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+--REFERENCES [dbo].[AspNetUsers] ([Id])
+--ON DELETE CASCADE
+--GO
+ 
+--ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId]
+--GO
+
+
+SET ANSI_NULLS ON
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+CREATE TABLE [dbo].[AspNetUserRoles](
+	[UserId] [nvarchar](128) NOT NULL,
+	[RoleId] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+ 
+GO
 create table Budgets
 (
 	Id int not null primary key identity (1, 1),
 	UserId int not null,
 	Amount numeric(18, 4) not null,
-	[From] date not null,
-	[To] date not null
+	[From] nvarchar(50) not null,
+	[To] nvarchar(50) not null
 )
 
 alter table Purchases

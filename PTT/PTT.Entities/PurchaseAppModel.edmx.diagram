@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4b1ecc0fa6634befadabc75dfc9994cd" Name="Diagram1">
+      <Diagram DiagramId="0a2eabfa38a64e38bd66e8c5a8b75d8e" Name="Diagram1">
         <EntityTypeShape EntityType="PurchaseAppDbModel.AspNetUser" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaseAppDbModel.Budget" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaseAppDbModel.Category" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaseAppDbModel.Importance" Width="1.5" PointX="3.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PurchaseAppDbModel.Place" Width="1.5" PointX="9.125" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaseAppDbModel.Place" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PurchaseAppDbModel.Purchase" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="PurchaseAppDbModel.fk_budget_to_user" ManuallyRouted="false" />
         <AssociationConnector Association="PurchaseAppDbModel.fk_purchase_to_user" ManuallyRouted="false" />
