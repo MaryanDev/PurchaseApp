@@ -20,7 +20,7 @@ namespace PTT.Entities
         public decimal Price { get; set; }
         public int UserId { get; set; }
         public Nullable<int> PlaceId { get; set; }
-        public System.DateTime Date { get; set; }
+        public string Date { get; set; }
         public int CategoryId { get; set; }
         public Nullable<int> ImportanceId { get; set; }
         public bool IsPlanned { get; set; }

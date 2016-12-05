@@ -13,6 +13,7 @@ using PTT.WebUI.Models;
 
 namespace PTT.WebUI.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         [AllowAnonymous]
@@ -23,8 +24,35 @@ namespace PTT.WebUI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(LoginModel loginModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel loginModel, string returnUrl)
         {
+            PttUser user = UserManager.Find(loginModel.Login, loginModel.Password);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid user name or password.");
+            }
+            else
+            {
+                ClaimsIdentity ident = UserManager.CreateIdentity(user,
+                    DefaultAuthenticationTypes.ApplicationCookie);
+
+                AuthManager.SignOut();
+                AuthManager.SignIn(new AuthenticationProperties
+                {
+                    IsPersistent = false
+                }, ident);
+                if(returnUrl != null)
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             return View(loginModel);
         }
 
@@ -45,7 +73,7 @@ namespace PTT.WebUI.Controllers
 
                 if (resultOfRegisteing.Succeeded)
                 {
-                    RedirectToAction("Index", "Dashboard");
+                    RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -53,6 +81,12 @@ namespace PTT.WebUI.Controllers
                 }
             }
             return View(regModel);
+        }
+
+        public ActionResult Logout()
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Login");
         }
 
         private IAuthenticationManager AuthManager => HttpContext.GetOwinContext().Authentication;

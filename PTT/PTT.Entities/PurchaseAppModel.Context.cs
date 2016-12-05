@@ -20,10 +20,9 @@ namespace PTT.Entities
         {
         }
 
-        public PurchaseAppDbEntities(string connectionString)
-            : base(connectionString)
+        public PurchaseAppDbEntities(string connectionString) : base(connectionString)
         {
-                
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
