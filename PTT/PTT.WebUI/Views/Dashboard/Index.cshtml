@@ -1,0 +1,30 @@
+﻿@section HeadScripts{
+    <script src="~/Scripts/pages/dashboard/nav.controller.js"></script>
+    <script src="~/Scripts/pages/dashboard/config/route.config.js"></script>
+    <script src="~/Scripts/pages/dashboard/purchases/purchaseAjax.service.js"></script>
+    <script src="~/Scripts/pages/dashboard/plannedPurchases/plannedPurchases.controller.js"></script>
+    <script src="~/Scripts/pages/dashboard/purchases/purchase.controller.js"></script>
+    <script src="~/Scripts/pages/dashboard/statistics/statistics.controller.js"></script>
+}
+<div class="container" style="border:0px 1px 1px 1px solid black; margin-top:3%;">
+    <div ng-controller="navController">
+        <ul class="nav nav-tabs">
+            <li role="presentation" data-toggle="tab" ng-class="{active:isPurchases}" ng-click="isPurchases = true;isPlanned = false;isStatistics = false;">
+                <a href="#purchases">Purchases</a>
+            </li>
+            <li role="presentation" data-toggle="tab" ng-class="{active:isPlanned}" ng-click="isPurchases = false;isPlanned = true;isStatistics = false;">
+                <a href="#planned">Planned</a>
+            </li>
+            <li role="presentation" data-toggle="tab" ng-class="{active:isStatistics}" ng-click="isPurchases = false;isPlanned = false;isStatistics = true;">
+                <a href="#statistics">Statistics</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content clearfix">
+        <ng-view></ng-view>
+    </div>
+</div>
+@section FootScripts{
+
+
+}

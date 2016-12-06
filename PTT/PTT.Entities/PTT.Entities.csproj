@@ -60,6 +60,7 @@
     <Compile Include="Category.cs">
       <DependentUpon>PurchaseAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\SimplePurchaseInfoDto.cs" />
     <Compile Include="Importance.cs">
       <DependentUpon>PurchaseAppModel.tt</DependentUpon>
     </Compile>

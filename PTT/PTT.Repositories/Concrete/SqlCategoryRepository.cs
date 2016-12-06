@@ -56,5 +56,15 @@ namespace PTT.Repositories.Concrete
             context.SaveChanges();
             return entity;
         }
+
+        public List<string> GetCategoriesByUserId(int id)
+        {
+            var categories = from category in context.Categories
+                             join purchase in context.Purchases on category.Id equals purchase.CategoryId
+                             where purchase.UserId == id
+                             select category.Title;
+
+            return categories.Distinct().ToList();
+        }
     }
 }
