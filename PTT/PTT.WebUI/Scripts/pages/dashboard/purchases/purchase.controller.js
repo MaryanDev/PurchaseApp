@@ -4,8 +4,8 @@
         .controller("purchaseController", purchaseController);
 
     purchaseController.$inject = ["$scope", "purchaseAjaxService", "$uibModal"];
-    
-    function purchaseController($scope, purchaseAjaxService) {
+
+    function purchaseController($scope, purchaseAjaxService, $uibModal) {
         $scope.purchases = [];
         $scope.search = {};
         $scope.categories = [];
@@ -53,10 +53,20 @@
                 })
         }
 
+        $scope.showAddDialog = function () {
+            $uibModal.open({
+                animation: true,
+                templateUrl: "/Scripts/pages/dashboard/modal/purchaseModal/purchaseModal.html",
+                controller: "purchaseModalController",
+                controllerAs: "pmCtrl",
+                size: "lg"
+            });
+        }
+
         function initData(response) {
             $scope.purchases = response.data.purchases;
             $scope.pagination.allPages = new Array(response.data.allPages);
             $scope.pagination.currentPage = response.data.currentPage;
         }
     }
-})(angular)
+})(angular);

@@ -172,6 +172,8 @@
     <Content Include="Scripts\libs\ui-bootstrap.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pages\dashboard\config\route.config.js" />
+    <Content Include="Scripts\pages\dashboard\modal\purchaseModal\purchaseModal.controller.js" />
+    <Content Include="Scripts\pages\dashboard\modal\purchaseModal\purchaseModal.html" />
     <Content Include="Scripts\pages\dashboard\nav.controller.js" />
     <Content Include="Scripts\pages\dashboard\plannedPurchases\plannedPurchases.controller.js" />
     <Content Include="Scripts\pages\dashboard\purchases\purchase.controller.js" />
@@ -226,7 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\pages\dashboard\modal\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PTT.Entities\PTT.Entities.csproj">

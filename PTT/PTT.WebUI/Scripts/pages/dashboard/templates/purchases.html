@@ -40,7 +40,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="addRow"><td colspan="4"><span class="glyphicon glyphicon-plus">Add purchase</span></td></tr>
+                    <tr class="addRow" ng-click="showAddDialog()"><td colspan="4"><span class="glyphicon glyphicon-plus">Add purchase</span></td></tr>
                     <tr class="dataRow" ng-repeat="purchase in purchases">
                         <td>{{purchase.Title}}</td>
                         <td>{{purchase.Price}}</td>
