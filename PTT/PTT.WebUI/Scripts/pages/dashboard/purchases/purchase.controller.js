@@ -3,7 +3,7 @@
         .module("purchaseModule")
         .controller("purchaseController", purchaseController);
 
-    purchaseController.$inject = ["$scope", "purchaseAjaxService"];
+    purchaseController.$inject = ["$scope", "purchaseAjaxService", "$uibModal"];
     
     function purchaseController($scope, purchaseAjaxService) {
         $scope.purchases = [];

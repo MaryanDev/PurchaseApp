@@ -16,3 +16,21 @@ textarea {
     max-width: 280px;
 }
 
+.purchases .dataRow:hover{
+    background-color:gray;
+    color:white;
+}
+
+.purchases tr a{
+    color:royalblue;
+}
+
+.addRow{
+    text-align:center;
+}
+.addRow:hover{
+    cursor:pointer;
+    color:greenyellow;
+    background-color:gray;
+}
+

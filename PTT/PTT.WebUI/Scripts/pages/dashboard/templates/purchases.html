@@ -30,7 +30,7 @@
             </form>
         </div>
         <div class="col-md-8" style="margin-top:3%;">
-            <table class="table table-bordered">
+            <table class="table table-bordered purchases">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -40,7 +40,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="purchase in purchases">
+                    <tr class="addRow"><td colspan="4"><span class="glyphicon glyphicon-plus">Add purchase</span></td></tr>
+                    <tr class="dataRow" ng-repeat="purchase in purchases">
                         <td>{{purchase.Title}}</td>
                         <td>{{purchase.Price}}</td>
                         <td>{{purchase.Date}}</td>
