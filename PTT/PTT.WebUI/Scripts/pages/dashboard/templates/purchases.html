@@ -1,0 +1,58 @@
+﻿<div class="container tab-pane active" style="background-color:#f5f5f5">
+    <div class="row">
+        <div class="col-md-4">
+            <form ng-submit="getBySearchOptions(search)" class="text-center" style="margin-top:3%;">
+                <h4 class="text-info">Search Options</h4>
+                <div class="form-group row">
+                    <label class="col-md-4">Categories</label>
+                    <select ng-model="search.Category" class="form-control-static input-sm col-md-6">
+                        <option>All</option>
+                        <option ng-repeat="category in categories">
+                            {{category}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-4">Title</label>
+                    <input type="text" ng-model="search.Title" class="form-control-static input-sm col-md-6"/>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-4">Min price</label>
+                    <input type="number" ng-model="search.MinPrice" class="form-control-static input-sm col-md-6" />
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-4">Max price</label>
+                    <input type="number" ng-model="search.MaxPrice" class="form-control-static input-sm col-md-6" />
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8" style="margin-top:3%;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="purchase in purchases">
+                        <td>{{purchase.Title}}</td>
+                        <td>{{purchase.Price}}</td>
+                        <td>{{purchase.Date}}</td>
+                        <td><a style="cursor:pointer" ng-click="getPurchasesByCategory(purchase.Category)">{{purchase.Category}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <ul class="pagination pagination-lg">
+                    <li ng-repeat="page in pagination.allPages track by $index"><a ng-click="getBySearchOptions(search, $index + 1)">{{$index + 1}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

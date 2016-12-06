@@ -42,7 +42,7 @@
 </div>
 <div class="container text-center">
     <p>PTT - Purchases tracking tool. This software is aimed to help you to track all your personal costs and purchases.</p>
-    @if (Request.IsAuthenticated)
+    @if (!Request.IsAuthenticated)
     {
         <button class="btn btn-lg btn-success">@Html.ActionLink("Join us", "Register", "Account")</button>
     }

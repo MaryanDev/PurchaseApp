@@ -9,5 +9,6 @@ namespace PTT.Repositories.Abstract.Interfaces
 {
     public interface ICategoryRepository : IRepository<Category>
     {
+        List<string> GetCategoriesByUserId(int id);
     }
 }

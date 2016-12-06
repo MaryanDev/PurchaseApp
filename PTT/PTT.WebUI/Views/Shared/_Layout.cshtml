@@ -7,11 +7,19 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    @RenderSection("HeadStyles", false)
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/libs/angular.js"></script>
+    <script src="~/Scripts/libs/angular.route.js"></script>
+    <script src="~/Scripts/libs/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/pages/purchaseApp.module.js"></script>
+
+
+    @RenderSection("HeadScripts", false)
 </head>
-<body>
+<body ng-app="purchaseModule">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -28,6 +36,7 @@
                     {
                         <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
                         <li><a>Hello @User.Identity.GetUserName()</a></li>
+                        <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
                     }
                     else
                     {
@@ -43,5 +52,6 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("FootScripts", false)
 </body>
 </html>
