@@ -226,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\pages\dashboard\modal\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PTT.Entities\PTT.Entities.csproj">

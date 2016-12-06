@@ -31,7 +31,7 @@ namespace PTT.WebUI.Controllers
         // GET: Purchase
         public JsonResult GetPurchases(int page = 1)
         {
-            Func<Purchase, bool> condition = pur => pur.UserId == User.Identity.GetUserId<int>();
+            Func<Purchase, bool> condition = pur => pur.UserId == User.Identity.GetUserId<int>() && !pur.IsPlanned;
             var result = _purchaseRepo
                 .Get(condition, p => p.Category)
                 .Select(AsSimplePurchaseDto)
@@ -45,7 +45,7 @@ namespace PTT.WebUI.Controllers
         [HttpPost]
         public JsonResult GetPurchases(PurchaseSearchModel searchModel, int page = 1)
         {
-            Func<Purchase, bool> condition = pur => pur.UserId == User.Identity.GetUserId<int>()
+            Func<Purchase, bool> condition = pur => pur.UserId == User.Identity.GetUserId<int>() && !pur.IsPlanned
                     && pur.Category.Title.ToLower().Contains(searchModel.Category.Trim().ToLower())
                     && pur.Title.ToLower().Contains(searchModel.Title.ToLower())
                     && (pur.Price >= searchModel.MinPrice && pur.Price <= searchModel.MaxPrice);
