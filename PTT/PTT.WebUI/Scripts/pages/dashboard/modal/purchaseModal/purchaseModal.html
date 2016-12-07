@@ -3,9 +3,37 @@
         <h2 class="text-center">Add purchase</h2>
     </div>
     <div class="modal-body">
-        <form ng-submit="modifyPurchase(purchase)">
+        <form ng-submit="addPurchase(purchase)">
             <div class="form-group row">
-                <label></label>
+                <label class="col-md-4">Title</label>
+                <input class="col-md-7 form-control-static input-sm" type="text" ng-model="purchase.Title" />
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4">Description</label>
+                <textarea class="col-md-7 form-control-static input-sm" ng-model="purchase.Description" />
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4">Price</label>
+                <input class="col-md-7 form-control-static input-sm" type="number" min="0" max="10000000" ng-model="purchase.Price" />
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4">Date</label>
+                <input class="col-md-7 form-control-static input-sm" type="date" ng-model="purchase.Date" />
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4">Title</label>
+                <select class="col-md-7 form-control-static input-sm" ng-model="purchase.Category">
+                    <option selected="" ng-repeat="category in categories">{{category}}</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4">Importance</label>
+                <select class="col-md-7 form-control-static input-sm" ng-model="purchase.Importance">
+                    <option ng-repeat="importance in importances" selected>{{importance}}</option>
+                </select>
+            </div>
+            <div class="form-group row text-center">
+                <input type="submit" class="form-control-static btn btn-success col-md-6 col-md-push-3" value="Create" />
             </div>
         </form>
     </div>

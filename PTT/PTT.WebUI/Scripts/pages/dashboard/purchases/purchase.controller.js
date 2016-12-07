@@ -57,9 +57,14 @@
             $uibModal.open({
                 animation: true,
                 templateUrl: "/Scripts/pages/dashboard/modal/purchaseModal/purchaseModal.html",
+                size: "sm",
                 controller: "purchaseModalController",
                 controllerAs: "pmCtrl",
-                size: "lg"
+                resolve: {
+                    categories: function () {
+                        return $scope.categories;
+                    }
+                }
             });
         }
 

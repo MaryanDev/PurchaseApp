@@ -5656,6 +5656,7 @@ body.modal-open,
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
           box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
+  margin-top:40%;
 }
 
 .modal-backdrop {
@@ -5742,7 +5743,7 @@ body.modal-open,
   .modal-dialog {
     right: auto;
     left: 50%;
-    width: 600px;
+    width: 400px;
     padding-top: 30px;
     padding-bottom: 30px;
   }

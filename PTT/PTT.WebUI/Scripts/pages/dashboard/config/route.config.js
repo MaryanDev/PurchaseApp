@@ -8,6 +8,11 @@
                     controller: "purchaseController",
                     controllerAs: "pc"
                 })
+                .when("/purchases/:id", {
+                    templateUrl: "/Scripts/pages/dashboard/templates/purchaseDetails.html",
+                    controller: "purchaseDetailsController",
+                    controllerAs: "pdc"
+                })
                 .when("/planned", {
                     templateUrl: "/Scripts/pages/dashboard/templates/planned.html",
                     controller: "plannedPurchasesController",

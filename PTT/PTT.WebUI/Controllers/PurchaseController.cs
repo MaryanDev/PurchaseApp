@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using PTT.Entities;
 using PTT.WebUI.Models;
 using PTT.Entities.DTOs;
+using System.Net;
 
 namespace PTT.WebUI.Controllers
 {
@@ -15,6 +16,8 @@ namespace PTT.WebUI.Controllers
     public class PurchaseController : Controller
     {
         private IPurchaseRepository _purchaseRepo;
+        private IImportanceRepository _importanceRepo;
+        ICategoryRepository _categoryRepo;
         private Func<Purchase, SimplePurchaseInfoDto> AsSimplePurchaseDto = pur => new SimplePurchaseInfoDto
         {
             Id = pur.Id,
@@ -24,9 +27,11 @@ namespace PTT.WebUI.Controllers
             Category = pur.Category.Title
         };
 
-        public PurchaseController(IPurchaseRepository purchaseRepo)
+        public PurchaseController(IPurchaseRepository purchaseRepo, IImportanceRepository importanceRepo, ICategoryRepository categoryRepo)
         {
             _purchaseRepo = purchaseRepo;
+            _importanceRepo = importanceRepo;
+            _categoryRepo = categoryRepo;
         }
         // GET: Purchase
         public JsonResult GetPurchases(int page = 1)
@@ -58,6 +63,57 @@ namespace PTT.WebUI.Controllers
 
             var count = GetCountOfPages(_purchaseRepo.Get(condition, p => p.Category).Count(), pageSize);
             return Json(new { purchases = result, allPages = count, currentPage = page }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetImportances()
+        {
+            var importances = _importanceRepo
+                .Get()
+                .Select(i => i.ImpTitle);
+            return Json(importances, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public HttpStatusCodeResult AddPurchase(FullPurchaseInfoDto purchaseToAdd)
+        {
+            var importanceId = _importanceRepo.GetSingle(i => i.ImpTitle == purchaseToAdd.Importance.Trim()).Id;
+            var categoryId = _categoryRepo.GetSingle(c => c.Title == purchaseToAdd.Category).Id;
+
+            _purchaseRepo.Insert(new Purchase
+            {
+                Title = purchaseToAdd.Title,
+                Description = purchaseToAdd.Description,
+                Price = purchaseToAdd.Price,
+                Date = purchaseToAdd.Date,
+                ImportanceId = importanceId,
+                CategoryId = categoryId,
+                UserId = User.Identity.GetUserId<int>(),
+                IsPlanned = false
+            });
+
+            return new HttpStatusCodeResult(HttpStatusCode.Created);
+        }
+
+        [HttpGet]
+        public JsonResult GetFullPurchaseInfo(int purchaseId)
+        {
+            var purchaseInfo = _purchaseRepo
+                .Get(pur => pur.Id == purchaseId, p => p.Importance, p => p.Category, p => p.Place)
+                .Select(info => new FullPurchaseInfoDto
+                {
+                    Id = info.Id,
+                    Title = info.Title,
+                    Description = info.Description,
+                    Date = info.Date,
+                    Category = info.Category.Title,
+                    Importance = info.Importance.ImpTitle,
+                    Price = info.Price
+                })
+                .SingleOrDefault();
+
+            return Json(purchaseInfo, JsonRequestBehavior.AllowGet);
+                
         }
 
         protected int pageSize = 10;

@@ -176,10 +176,12 @@
     <Content Include="Scripts\pages\dashboard\modal\purchaseModal\purchaseModal.html" />
     <Content Include="Scripts\pages\dashboard\nav.controller.js" />
     <Content Include="Scripts\pages\dashboard\plannedPurchases\plannedPurchases.controller.js" />
+    <Content Include="Scripts\pages\dashboard\purchaseDetails\purchaseDetails.controller.js" />
     <Content Include="Scripts\pages\dashboard\purchases\purchase.controller.js" />
     <Content Include="Scripts\pages\dashboard\purchases\purchaseAjax.service.js" />
     <Content Include="Scripts\pages\dashboard\statistics\statistics.controller.js" />
     <Content Include="Scripts\pages\dashboard\templates\planned.html" />
+    <Content Include="Scripts\pages\dashboard\templates\purchaseDetails.html" />
     <Content Include="Scripts\pages\dashboard\templates\purchases.html" />
     <Content Include="Scripts\pages\dashboard\templates\statistics.html" />
     <Content Include="Scripts\pages\purchaseApp.module.js" />
