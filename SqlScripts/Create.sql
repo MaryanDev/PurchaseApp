@@ -61,7 +61,7 @@ SET QUOTED_IDENTIFIER ON
 GO
  
 CREATE TABLE [dbo].[AspNetRoles](
-	[Id] [nvarchar](128) NOT NULL,
+	[Id] int identity(1, 1) NOT NULL,
 	[Name] [nvarchar](256) NOT NULL,
  CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED 
 (
@@ -79,7 +79,7 @@ GO
  
 CREATE TABLE [dbo].[AspNetUserClaims](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [nvarchar](128) NOT NULL,
+	[UserId] int NOT NULL,
 	[ClaimType] [nvarchar](max) NULL,
 	[ClaimValue] [nvarchar](max) NULL,
  CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED 
@@ -107,7 +107,7 @@ GO
 CREATE TABLE [dbo].[AspNetUserLogins](
 	[LoginProvider] [nvarchar](128) NOT NULL,
 	[ProviderKey] [nvarchar](128) NOT NULL,
-	[UserId] [nvarchar](128) NOT NULL,
+	[UserId] int NOT NULL,
  CONSTRAINT [PK_dbo.AspNetUserLogins] PRIMARY KEY CLUSTERED 
 (
 	[LoginProvider] ASC,
@@ -134,8 +134,8 @@ SET QUOTED_IDENTIFIER ON
 GO
  
 CREATE TABLE [dbo].[AspNetUserRoles](
-	[UserId] [nvarchar](128) NOT NULL,
-	[RoleId] [nvarchar](128) NOT NULL,
+	[UserId] int NOT NULL,
+	[RoleId] int NOT NULL,
  CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY CLUSTERED 
 (
 	[UserId] ASC,

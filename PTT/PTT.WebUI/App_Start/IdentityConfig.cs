@@ -25,11 +25,10 @@ namespace PTT.WebUI.App_Start
                 Provider = new CookieAuthenticationProvider
                 {
                     OnValidateIdentity = SecurityStampValidator
-                .OnValidateIdentity<PttUserManager, PttUser, int>(
-                    validateInterval: TimeSpan.FromMinutes(30),
-                    regenerateIdentityCallback: (manager, user) =>
-                        user.GenerateUserIdentityAsync(manager),
-                    getUserIdCallback: (id) => (id.GetUserId<int>()))
+                        .OnValidateIdentity<PttUserManager, PttUser, int>(
+                            validateInterval: TimeSpan.FromMinutes(30),
+                            regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager),
+                            getUserIdCallback: (id) => (id.GetUserId<int>()))
                 }
             });
         }

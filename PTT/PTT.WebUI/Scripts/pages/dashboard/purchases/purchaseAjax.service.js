@@ -9,7 +9,9 @@
         var service = {
             getPurchases: getPurchasesAjax,
             filterPurchases: filterPurchasesAjax,
-            getCategoriesForCurrentUser: getCategoriesForCurrentUserAjax
+            getCategoriesForCurrentUser: getCategoriesForCurrentUserAjax,
+            getImportances: getImportancesAjax,
+            addPurchase: addPurchaseAjax
         }
 
         return service;
@@ -38,6 +40,24 @@
                 data: { searchModel: searchModel, page: page }
             });
 
+            return promise;
+        }
+
+        function getImportancesAjax() {
+            var promise = $http({
+                method: "GET",
+                url: "/Purchase/GetImportances"
+            });
+
+            return promise;
+        }
+
+        function addPurchaseAjax(purchase) {
+            var promise = $http({
+                method: "POST",
+                url: "/Purchase/AddPurchase",
+                data: { purchaseToAdd: purchase }
+            });
             return promise;
         }
     }
