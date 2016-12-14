@@ -6,34 +6,34 @@
         <form ng-submit="addPurchase(purchase)">
             <div class="form-group row">
                 <label class="col-md-4">Title</label>
-                <input class="col-md-7 form-control-static input-sm" type="text" ng-model="purchase.Title" />
+                <input class="col-md-7 form-control-static input-sm" type="text" required ng-model="purchase.Title" />
             </div>
             <div class="form-group row">
                 <label class="col-md-4">Description</label>
-                <textarea class="col-md-7 form-control-static input-sm" ng-model="purchase.Description" />
+                <textarea class="col-md-7 form-control-static input-sm" required ng-model="purchase.Description" />
             </div>
             <div class="form-group row">
                 <label class="col-md-4">Price</label>
-                <input class="col-md-7 form-control-static input-sm" type="number" min="0" max="10000000" ng-model="purchase.Price" />
+                <input class="col-md-7 form-control-static input-sm" type="number" min="0" max="10000000" required ng-model="purchase.Price" />
             </div>
             <div class="form-group row">
                 <label class="col-md-4">Date</label>
-                <input class="col-md-7 form-control-static input-sm" type="date" ng-model="purchase.Date" />
+                <input class="col-md-7 form-control-static input-sm" type="date" ng-model="purchase.Date" required />
             </div>
             <div class="form-group row">
                 <label class="col-md-4">Title</label>
-                <select class="col-md-7 form-control-static input-sm" ng-model="purchase.Category">
-                    <option selected="" ng-repeat="category in categories">{{category}}</option>
+                <select class="col-md-7 form-control-static input-sm" ng-model="purchase.Category" required>
+                    <option ng-repeat="category in categories">{{category}}</option>
                 </select>
             </div>
             <div class="form-group row">
                 <label class="col-md-4">Importance</label>
-                <select class="col-md-7 form-control-static input-sm" ng-model="purchase.Importance">
-                    <option ng-repeat="importance in importances" selected>{{importance}}</option>
+                <select class="col-md-7 form-control-static input-sm" ng-model="purchase.Importance" required>
+                    <option ng-repeat="importance in importances">{{importance}}</option>
                 </select>
             </div>
             <div class="form-group row text-center">
-                <input type="submit" class="form-control-static btn btn-success col-md-6 col-md-push-3" value="Create" />
+                <input type="submit" class="form-control-static btn btn-success col-md-6 col-md-push-3" required value="Create" />
             </div>
         </form>
     </div>

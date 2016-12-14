@@ -21,6 +21,13 @@ namespace PTT.WebUI.Infrastructure.Autentification
         {
             //PttIdentityDbContext db = context.Get<PttIdentityDbContext>();
             PttUserManager manager = new PttUserManager(new PttUserStore(context.Get<PttIdentityDbContext>()));
+            var dataProtectionProvider = options.DataProtectionProvider;
+            if (dataProtectionProvider != null)
+            {
+                manager.UserTokenProvider =
+                    new DataProtectorTokenProvider<PttUser, int>(
+                        dataProtectionProvider.Create("ASP.NET Identity"));
+            }
             return manager;
         }
     }
